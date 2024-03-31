@@ -17,7 +17,7 @@ include = ["{{ cookiecutter.project_slug }}*"]
 exclude = ["data*", "tests*"]
 
 [tool.setuptools.package-data]
-"{{ cookiecutter.project_slug }}" = ["*.json", "*.yaml", "*.yml", "*.txt"]
+{{ cookiecutter.project_slug }} = ["*.json", "*.yaml", "*.yml", "*.txt"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
@@ -92,4 +92,3 @@ exclude_also = [
     "@(typing(_extensions)?\\.)?overload",
     "if (typing(_extensions)?\\.)?TYPE_CHECKING:",
 ]
-
