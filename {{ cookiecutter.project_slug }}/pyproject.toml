@@ -1,0 +1,21 @@
+[project]
+name = "{{ cookiecutter.project_slug }}"
+description = "{{ cookiecutter.project_description }}"
+dynamic = ["dependencies", "optional-dependencies"]
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+optional-dependencies = { dev = { file = ["requirements-dev.txt"] } }
+
+[tool.setuptools.packages.find]
+include = ["{{ cookiecutter.project_slug }}*"]
+exclude = ["data*", "tests*"]
+
+[tool.setuptools.package-data]
+"{{ cookiecutter.project_slug }}" = ["*.json", "*.yaml", "*.yml", "*.txt"]
+
