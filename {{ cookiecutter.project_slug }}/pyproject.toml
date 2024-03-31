@@ -19,3 +19,15 @@ exclude = ["data*", "tests*"]
 [tool.setuptools.package-data]
 "{{ cookiecutter.project_slug }}" = ["*.json", "*.yaml", "*.yml", "*.txt"]
 
+[tool.pytest.ini_options]
+pythonpath = ["."]
+required_plugins = ["pytest-cov"]
+addopts = [
+    "--strict-config",
+    "--ignore=setup.py",
+    "--cov={{ cookiecutter.project_slug }}",
+    "--cov-config=pyproject.toml",
+    "--cov-append",
+    "--cov-report=term-missing",
+]
+
