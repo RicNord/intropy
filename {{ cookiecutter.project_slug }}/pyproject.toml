@@ -1,6 +1,6 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
-description = "{{ cookiecutter.project_description }}"
+description = "{{ cookiecutter.project_short_description }}"
 dynamic = ["dependencies", "optional-dependencies"]
 readme = "README.md"
 
