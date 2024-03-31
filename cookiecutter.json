@@ -10,19 +10,5 @@
     "open_source_license": [
         "MIT",
         "Not open source"
-    ],
-    "__prompts__": {
-        "full_name": "Author full name",
-        "email": "Author email",
-        "github_username": "GitHub username or organization",
-        "project_name": "Select your package name",
-        "project_short_description": "Short description",
-        "pypi_username": "PyPi username or organization",
-        "version": "Initial Version",
-        "open_source_license": {
-            "__prompt__": "Which open source license do you want to use?",
-            "MIT": "MIT license",
-            "Not open source": "Not a open source project"
-        },
-    }
+    ]
 }
