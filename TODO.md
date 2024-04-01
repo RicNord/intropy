@@ -23,12 +23,8 @@
 ```
 ## Tooling
 
-- Twine
-- bump2version
-- Makefile
 - git init?
 - CI
 - Readme
 - Docs
-- Manifest.in
 - CLI
