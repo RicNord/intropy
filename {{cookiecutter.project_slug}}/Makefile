@@ -27,7 +27,11 @@ lint: ## Run lint
 .PHONY: format
 format: ## Run formatting
 	@echo "+ $@"
+{%- if cookiecutter.black_formatting == 'y' %}
+	@black .
+{%- else %}
 	@ruff format
+{%- endif %}
 
 .PHONY: type
 type: ## Run type checking
@@ -35,9 +39,8 @@ type: ## Run type checking
 	@mypy .
 
 .PHONY: auto-fix
-auto-fix: ## Auto-fix possible style issues
+auto-fix: format ## Auto-fix possible style issues
 	@echo "+ $@"
-	@ruff format
 	@ruff check --fix --show-fixes
 
 .PHONY: build

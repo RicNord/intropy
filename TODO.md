@@ -23,7 +23,6 @@
 ```
 ## Tooling
 
-- Explicitly use black as option
 - git init?
 - CI
     - tests
