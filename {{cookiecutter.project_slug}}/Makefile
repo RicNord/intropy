@@ -30,7 +30,7 @@ format: ## Run formatting
 	@ruff format
 
 .PHONY: type
-type: ## Run type cheking
+type: ## Run type checking
 	@echo "+ $@"
 	@mypy .
 
@@ -47,29 +47,29 @@ build: clean ## Build distribution
 	@ls -l dist
 
 .PHONY: clean-tox
-clean-tox: ## Remove tox testing artifacts
+clean-tox: # Remove tox testing artifacts
 	@echo "+ $@"
 	@rm -rf .tox/
 
 .PHONY: clean-coverage
-clean-coverage: ## Remove coverage reports
+clean-coverage: # Remove coverage reports
 	@echo "+ $@"
 	@rm -rf htmlcov/
 	@rm -rf .coverage
 	@rm -rf coverage.xml
 
 .PHONY: clean-pytest
-clean-pytest: ## Remove pytest cache
+clean-pytest: # Remove pytest cache
 	@echo "+ $@"
 	@rm -rf .pytest_cache/
 
 .PHONY: clean-docs
-clean-docs: ## Remove local docs
+clean-docs: # Remove local docs
 	@echo "+ $@"
 	@rm -rf docs/_build
 
 .PHONY: clean-build
-clean-build: ## Remove build artifacts
+clean-build: # Remove build artifacts
 	@echo "+ $@"
 	@rm -rf build/
 	@rm -rf dist/
@@ -77,7 +77,7 @@ clean-build: ## Remove build artifacts
 	@find . -name '*.egg' -exec rm -f {} +
 
 .PHONY: clean-pyc
-clean-pyc: ## Remove Python file artifacts
+clean-pyc: # Remove Python file artifacts
 	@echo "+ $@"
 	@find . -type d -name '__pycache__' -exec rm -rf {} +
 	@find . -type f -name '*.pyc' -exec rm -f {} +
@@ -86,3 +86,23 @@ clean-pyc: ## Remove Python file artifacts
 .PHONY: clean
 clean: clean-build clean-pyc clean-tox clean-coverage clean-pytest clean-docs ## Remove all file artifacts
 	@echo "+ $@"
+
+.PHONY: gen-req
+gen-req: ## Generates new requirements{,-dev}.txt files from Pipfile.lock
+	@echo "+ $@"
+	@pipenv requirements --dev-only | sed '/^-i /d' > requirements-dev.txt
+	@pipenv requirements | sed '/^-i /d' > requirements.txt
+
+.PHONY: lock
+lock: # Updates the Pipfile.lock
+	@echo "+ $@"
+	@pipenv lock --dev
+
+.PHONY: upgrade-deps
+upgrade-deps: lock gen-req ## Upgrades dependencies
+	@echo "+ $@"
+
+.PHONY: dev
+dev: ## Set-up development environment
+	@echo "+ $@"
+	@pipenv sync --dev
