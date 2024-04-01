@@ -6,8 +6,15 @@ name = "pypi"
 [packages]
 
 [dev-packages]
+build = "*"
+bump-my-version = "*"
 mypy = "*"
+pre-commit = "*"
 pytest = "*"
 pytest-cov = "*"
-pre-commit = "*"
 ruff = "*"
+twine = "*"
+{%- if cookiecutter.black_formatting == 'y' %}
+black = "*"
+{%- endif %}
+

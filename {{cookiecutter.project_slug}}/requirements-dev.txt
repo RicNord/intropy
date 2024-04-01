@@ -1,20 +1,11 @@
-cfgv
-coverage[toml]
-distlib
-filelock
-identify
-iniconfig
+build
+bump-my-version
 mypy
-mypy-extensions
-nodeenv
-packaging
-platformdirs
-pluggy
 pre-commit
 pytest
 pytest-cov
-pyyaml
 ruff
-setuptools
-typing-extensions
-virtualenv
+twine
+{%- if cookiecutter.black_formatting == 'y' %}
+black
+{%- endif %}

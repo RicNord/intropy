@@ -1,12 +1,10 @@
 {
     "full_name": "Firstname Lastname",
-    "email": "email@example.com",
-    "github_username": "your-org-or-username",
     "project_name": "Python Project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "project_short_description": "A nice python package",
-    "pypi_username": "{{ cookiecutter.github_username }}",
     "version": "0.1.0",
+    "black_formatting": "n",
     "open_source_license": [
         "MIT",
         "Not open source"
