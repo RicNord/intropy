@@ -8,5 +8,6 @@ name = "pypi"
 [dev-packages]
 mypy = "*"
 pytest = "*"
+pytest-cov = "*"
 pre-commit = "*"
 ruff = "*"
