@@ -41,7 +41,7 @@ auto-fix: ## Auto-fix possible style issues
 	@ruff check --fix --show-fixes
 
 .PHONY: build
-build: clean ## Build distribution
+build: clean-build ## Build distribution
 	@echo "+ $@"
 	@python -m build
 	@ls -l dist
@@ -105,4 +105,15 @@ upgrade-deps: lock gen-req ## Upgrades dependencies
 .PHONY: dev
 dev: ## Set-up development environment
 	@echo "+ $@"
+	@pipenv shell
 	@pipenv sync --dev
+
+.PHONY: publish-test
+publish-test: build ## Publish pkg to PyPi test instance
+	@echo "+ $@"
+	@twine upload -r testpypi dist/*
+
+.PHONY: publish
+publish: build ## Publish pkg to PyPi
+	@echo "+ $@"
+	@twine upload dist/*
