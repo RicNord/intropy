@@ -14,3 +14,7 @@ pytest = "*"
 pytest-cov = "*"
 ruff = "*"
 twine = "*"
+{%- if cookiecutter.black_formatting == 'y' %}
+black = "*"
+{%- endif %}
+
