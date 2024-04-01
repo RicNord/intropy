@@ -54,7 +54,7 @@ ignore = [
     "E501", # line too long, handled by black
     "B008", # do not perform function calls in argument defaults
     "C901", # too complex
-    "ICS001", # can cause conflict with formatter
+    "ISC001", # can cause conflict with formatter
 ]
 
 [tool.ruff.format]
@@ -114,5 +114,5 @@ message = "Bump version: {current_version} → {new_version}"
 commit_args = ""
 
 [[tool.bumpversion.files]]
-filename = "{{ cookiecutter.project_slug }}.__version__"
+filename = "{{ cookiecutter.project_slug }}/__init__.py"
 
