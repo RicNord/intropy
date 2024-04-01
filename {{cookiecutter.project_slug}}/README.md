@@ -11,9 +11,84 @@
 
 ## Install
 
-- TODO
+- TODO | How to install this project
 
 ## Usage
 
-- TODO
+- TODO | How to use this project
+
+## Development
+
+To list availible commands for your convenience:
+
+```shell
+make help
+```
+
+### Local environment setup
+
+To create a virtual environment with necessary dependencies run:
+
+```shell
+pipenv shell
+pipenv sync --dev
+```
+
+### Run tests
+
+```shell
+make pytest # Run pytest
+make style # Run lint formatting and type check
+make test-all # Run all tests with tox
+
+make auto-fix # Auto-fix possible style issues
+```
+
+### Pre-commit hooks
+
+To install optional [pre-commit](https://pre-commit.com/) hooks; after
+environment set-up run:
+
+```bash
+pre-commit install
+```
+
+## Project maintenance
+
+Intended for project maintainers
+
+### Release
+
+[Bump my version](https://callowayproject.github.io/bump-my-version/) is used
+to bump the semantic version of the project.
+
+For details see:
+
+```shell
+bump-my-version bump --help
+```
+
+Bump my version is configured to create a `new commit` and `tag` it with the
+new version when a version is bumped.
+
+To publish the new version to [PyPi](https://pypi.org/) run:
+
+```shell
+make publish-test # Publish pkg to PyPi test instance
+make publish # Publish pkg to PyPi
+```
+
+This will build the project and publish to PyPi with help of
+[Twine](https://twine.readthedocs.io/en/stable/). For authentication and
+additional target repositories refere to your
+[.pypirc](https://packaging.python.org/en/latest/specifications/pypirc/)
+configuration file.
+
+### Upgrade dependencies
+
+To upgrade dependnecies run:
+
+```shell
+make upgrade-deps
+```
 
