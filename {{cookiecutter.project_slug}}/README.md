@@ -19,7 +19,7 @@
 
 ## Development
 
-To list availible commands for your convenience:
+To list available commands for your convenience:
 
 ```shell
 make help
@@ -27,11 +27,22 @@ make help
 
 ### Local environment setup
 
-To create a virtual environment with necessary dependencies run:
+It is recommended to use [Pipenv](https://pipenv.pypa.io/en/latest/index.html),
+to create a virtual environment with necessary dependencies run:
 
 ```shell
 pipenv shell
 pipenv sync --dev
+```
+
+Or create and manage your virtual environment more manually:
+
+```shell
+python3 -m venv ./venv
+source ./venv/bin/activate
+
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
 ```
 
 ### Run tests
@@ -80,13 +91,13 @@ make publish # Publish pkg to PyPi
 
 This will build the project and publish to PyPi with help of
 [Twine](https://twine.readthedocs.io/en/stable/). For authentication and
-additional target repositories refere to your
+additional target repositories refer to your
 [.pypirc](https://packaging.python.org/en/latest/specifications/pypirc/)
 configuration file.
 
 ### Upgrade dependencies
 
-To upgrade dependnecies run:
+To upgrade dependencies run:
 
 ```shell
 make upgrade-deps

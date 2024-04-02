@@ -1,8 +1,19 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
 description = "{{ cookiecutter.project_short_description }}"
-dynamic = ["version", "dependencies", "optional-dependencies"]
 readme = "README.md"
+dynamic = ["version", "dependencies", "optional-dependencies"]
+{%- if cookiecutter.open_source_license == 'MIT' %}
+license = { file = "LICENSE" }
+{%- endif %}
+classifiers = [
+    "Programming Language :: Python :: 3",
+{%- if cookiecutter.open_source_license == 'MIT' %}
+    "License :: OSI Approved :: MIT License",
+{%- elif cookiecutter.open_source_license == 'Not open source' %}
+    "Private :: Do Not Upload",
+{%- endif %}
+]
 
 [build-system]
 requires = ["setuptools"]
@@ -11,7 +22,7 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
 optional-dependencies = { dev = { file = ["requirements-dev.txt"] } }
-version = {attr = "{{ cookiecutter.project_slug }}.__version__"}
+version = { attr = "{{ cookiecutter.project_slug }}.__version__" }
 
 [tool.setuptools.packages.find]
 include = ["{{ cookiecutter.project_slug }}*"]
@@ -51,9 +62,9 @@ select = [
     "RUF100", # Unused noqa (auto-fixable)
 ]
 ignore = [
-    "E501", # line too long, handled by black
-    "B008", # do not perform function calls in argument defaults
-    "C901", # too complex
+    "E501",   # line too long, handled by black
+    "B008",   # do not perform function calls in argument defaults
+    "C901",   # too complex
     "ISC001", # can cause conflict with formatter
 ]
 
@@ -115,4 +126,3 @@ commit_args = ""
 
 [[tool.bumpversion.files]]
 filename = "{{ cookiecutter.project_slug }}/__init__.py"
-
