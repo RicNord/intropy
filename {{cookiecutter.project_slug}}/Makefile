@@ -105,12 +105,6 @@ lock: # Updates the Pipfile.lock
 upgrade-deps: lock gen-req ## Upgrades dependencies
 	@echo "+ $@"
 
-.PHONY: dev
-dev: ## Set-up development environment
-	@echo "+ $@"
-	@pipenv shell
-	@pipenv sync --dev
-
 .PHONY: publish-test
 publish-test: build ## Publish pkg to PyPi test instance
 	@echo "+ $@"
