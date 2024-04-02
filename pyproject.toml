@@ -1,0 +1,87 @@
+[project]
+name = "pyinit"
+description = "Jump-start your python project"
+readme = "README.md"
+version = "0.1.0"
+dynamic = ["dependencies", "optional-dependencies"]
+license = { file = "LICENSE" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+optional-dependencies = { dev = { file = ["requirements-dev.txt"] } }
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+required_plugins = ["pytest-cookies"]
+addopts = ["--strict-config"]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+extend-exclude = ["\\{\\{cookiecutter.project_slug\\}\\}/"]
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # isort
+    "C",      # flake8-comprehensions
+    "B",      # flake8-bugbear
+    "TID",    # flake8-tidy-import
+    "TCH",    # flake8-type-checking TYPE_CHECKING blocks
+    "ISC",    # flake8-implicit-str-concat
+    "LOG",    # flake8-logging
+    "SIM",    # flake8-simplify
+    "RUF100", # Unused noqa (auto-fixable)
+]
+ignore = [
+    "E501",   # line too long, handled by black
+    "B008",   # do not perform function calls in argument defaults
+    "C901",   # too complex
+    "ISC001", # can cause conflict with formatter
+]
+
+[tool.ruff.format]
+# Enable reformatting of code snippets in docstrings.
+docstring-code-format = true
+indent-style = "space"
+# Use `\n` line endings for all files
+line-ending = "lf"
+
+[tool.ruff.lint.flake8-tidy-imports]
+# Disallow all relative imports.
+ban-relative-imports = "all"
+
+[tool.bumpversion]
+current_version = "0.1.0"
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+serialize = ["{major}.{minor}.{patch}"]
+search = "{current_version}"
+replace = "{new_version}"
+regex = false
+ignore_missing_version = false
+ignore_missing_files = false
+tag = true
+sign_tags = false
+tag_name = "v{new_version}"
+tag_message = "Bump version: {current_version} → {new_version}"
+allow_dirty = false
+commit = true
+message = "Bump version: {current_version} → {new_version}"
+commit_args = ""
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+
+[tool.mypy]
+exclude = ["\\{\\{cookiecutter.project_slug\\}\\}*"]
