@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+cookiecutter = "*"
+
+[dev-packages]
+bump-my-version = "*"
+mypy = "*"
+pre-commit = "*"
+pytest = "*"
+pytest-cookies = "*"
+ruff = "*"
