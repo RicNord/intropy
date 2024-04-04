@@ -15,9 +15,13 @@ def test_tox(cookies):
     if p1.returncode != 0:
         raise RuntimeError(err1)
 
-    p2 = subprocess.Popen(["tox"], cwd=result.project_path, stderr=subprocess.PIPE)
+    p2 = subprocess.Popen(
+        ["tox"],
+        cwd=result.project_path,
+        stderr=subprocess.PIPE,
+        universal_newlines=True,
+    )
     _, err2 = p2.communicate(timeout=100)
-    err2 = err2.decode("utf-8")
 
     if p2.returncode != 0:
         raise RuntimeError(err2)
