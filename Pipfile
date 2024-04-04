@@ -5,8 +5,10 @@ name = "pypi"
 
 [packages]
 cookiecutter = "*"
+importlib-resources = "*"
 
 [dev-packages]
+build = "*"
 bump-my-version = "*"
 mypy = "*"
 pre-commit = "*"
