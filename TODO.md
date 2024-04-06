@@ -7,7 +7,6 @@
   - tests
   - publish
 - Docs
-- CLI
 - human prompts
 - Templates
     - PR
