@@ -27,14 +27,21 @@ exclude = ["{{cookiecutter.project_slug}}*", "tests*", "hooks*"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
-required_plugins = ["pytest-cookies"]
-addopts = ["--strict-config"]
+required_plugins = ["pytest-cov", "pytest-cookies"]
+addopts = [
+    "--strict-config",
+    "--ignore=setup.py",
+    "--cov=pyinit",
+    "--cov-config=pyproject.toml",
+    "--cov-append",
+    "--cov-report=term-missing",
+]
 
 [tool.isort]
 profile = "black"
 
 [tool.ruff]
-extend-exclude = ["\\{\\{cookiecutter.project_slug\\}\\}/"]
+extend-exclude = ["\\{\\{cookiecutter.project_slug\\}\\}/", "hooks/"]
 
 [tool.ruff.lint]
 select = [
@@ -69,6 +76,33 @@ line-ending = "lf"
 # Disallow all relative imports.
 ban-relative-imports = "all"
 
+[tool.coverage.run]
+branch = true
+source = ["pyinit"]
+
+[tool.coverage.report]
+# Regexes for lines to exclude from consideration
+exclude_also = [
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+
+    # Dont complain typing
+    "@(typing(_extensions)?\\.)?overload",
+    "if (typing(_extensions)?\\.)?TYPE_CHECKING:",
+]
+
 [tool.bumpversion]
 current_version = "0.1.0"
 parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
@@ -91,7 +125,7 @@ commit_args = ""
 filename = "pyinit/__init__.py"
 
 [tool.mypy]
-exclude = ["\\{\\{cookiecutter.project_slug\\}\\}*"]
+exclude = ["\\{\\{cookiecutter.project_slug\\}\\}*", "hooks*"]
 
 [[tool.mypy.overrides]]
 module = "cookiecutter.main"
