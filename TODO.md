@@ -7,7 +7,6 @@
   - tests
   - publish
 - Docs
-- human prompts
 - Templates
     - PR
     - Issue

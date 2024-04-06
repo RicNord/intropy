@@ -9,5 +9,14 @@
         "MIT",
         "Not open source"
     ],
-    "is_cli_tool": true
+    "is_cli_tool": true,
+    "__prompts__": {
+        "full_name": "Author full name",
+        "project_name": "Project name (Use: alphanumericals, space, -, and _)",
+        "project_slug": "Project slug - This will be used as the name of your package",
+        "project_short_description": "Short description of your package",
+        "version": "Initial version of the package",
+        "open_source_license": "Select open source license",
+        "is_cli_tool": "Is this meant to be a CLI tool?"
+    }
 }
