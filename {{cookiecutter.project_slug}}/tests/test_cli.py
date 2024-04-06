@@ -1,4 +1,4 @@
-from  {{ cookiecutter.project_slug }} import cli
+from {{ cookiecutter.project_slug }} import cli
 
 
 def test_cli_runner():
