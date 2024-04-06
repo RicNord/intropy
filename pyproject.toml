@@ -2,13 +2,15 @@
 name = "pyinit"
 description = "Jump-start your python project"
 readme = "README.md"
-version = "0.1.0"
-dynamic = ["dependencies", "optional-dependencies"]
+dynamic = ["version", "dependencies", "optional-dependencies"]
 license = { file = "LICENSE" }
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
 ]
+
+[project.scripts]
+pyinit = "pyinit.cli:main"
 
 [build-system]
 requires = ["setuptools"]
@@ -17,6 +19,11 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
 optional-dependencies = { dev = { file = ["requirements-dev.txt"] } }
+version = { attr = "pyinit.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["pyinit"]
+exclude = ["{{cookiecutter.project_slug}}*", "tests*", "hooks*"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
@@ -74,14 +81,18 @@ ignore_missing_files = false
 tag = true
 sign_tags = false
 tag_name = "v{new_version}"
-tag_message = "Bump version: {current_version} → {new_version}"
+tag_message = "Bump version: {current_version} -> {new_version}"
 allow_dirty = false
 commit = true
-message = "Bump version: {current_version} → {new_version}"
+message = "Bump version: {current_version} -> {new_version}"
 commit_args = ""
 
 [[tool.bumpversion.files]]
-filename = "pyproject.toml"
+filename = "pyinit/__init__.py"
 
 [tool.mypy]
 exclude = ["\\{\\{cookiecutter.project_slug\\}\\}*"]
+
+[[tool.mypy.overrides]]
+module = "cookiecutter.main"
+ignore_missing_imports = true
