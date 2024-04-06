@@ -8,5 +8,6 @@
     "open_source_license": [
         "MIT",
         "Not open source"
-    ]
+    ],
+    "is_cli_tool": true
 }

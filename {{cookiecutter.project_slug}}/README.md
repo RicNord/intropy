@@ -17,6 +17,12 @@
 
 - TODO | How to use this project
 
+{% if cookiecutter.is_cli_tool -%}
+```shell
+{{ cookiecutter.project_slug.lower().replace('_', '-') }} --help
+```
+{%- endif %}
+
 ## Development
 
 To list available commands for your convenience:

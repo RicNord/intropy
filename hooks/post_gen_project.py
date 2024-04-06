@@ -1,15 +1,15 @@
 #!/usr/bin/env python
-import os
-
-PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
+import pathlib
 
 
-def remove_file(relative_filepath):
-    FILE_PATH = os.path.join(PROJECT_DIRECTORY, relative_filepath)
-    if os.path.isfile(FILE_PATH):
-        os.remove(FILE_PATH)
+def main():
+    if "Not open source" == "{{ cookiecutter.open_source_license }}":
+        pathlib.Path("LICENSE").unlink()
+
+    if not {{cookiecutter.is_cli_tool}}:
+        pathlib.Path("{{ cookiecutter.project_slug }}", "cli.py").unlink()
+        pathlib.Path("tests", "test_cli.py").unlink()
 
 
 if __name__ == "__main__":
-    if "Not open source" == "{{ cookiecutter.open_source_license }}":
-        remove_file("LICENSE")
+    main()
