@@ -10,6 +10,7 @@
         "Not open source"
     ],
     "is_cli_tool": true,
+    "git_init": true,
     "__prompts__": {
         "full_name": "Author full name",
         "project_name": "Project name (Use: alphanumericals, space, -, and _)",
@@ -17,6 +18,7 @@
         "project_short_description": "Short description of your package",
         "version": "Initial version of the package",
         "open_source_license": "Select open source license",
-        "is_cli_tool": "Is this meant to be a CLI tool?"
+        "is_cli_tool": "Is this meant to be a CLI tool",
+        "git_init": "Initialize git repository"
     }
 }
