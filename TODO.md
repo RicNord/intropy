@@ -2,7 +2,6 @@
 
 ## Tooling
 
-- git init?
 - CI
   - tests
   - publish
