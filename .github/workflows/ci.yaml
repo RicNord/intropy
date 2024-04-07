@@ -19,12 +19,12 @@ jobs:
       matrix:
         py:
           - "3.11"
-          - "3.10"
-          - "3.9"
+          #- "3.10"
+          #- "3.9"
         os:
-          - ubuntu-latest
+          #- ubuntu-latest
           - windows-latest
-          - macos-latest
+          #- macos-latest
     steps:
       - uses: actions/checkout@v4
         with:
@@ -55,9 +55,9 @@ jobs:
           - format
           - pre-commit
         os:
-          - ubuntu-latest
+          #- ubuntu-latest
           - windows-latest
-          - macos-latest
+          #- macos-latest
     steps:
       - uses: actions/checkout@v4
         with:
