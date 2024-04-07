@@ -3,7 +3,7 @@
 {{ cookiecutter.project_short_description }}
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-{% if cookiecutter.black_formatting == 'y' -%}
+{% if cookiecutter.code_formatter == 'Black' -%}
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 {% endif -%}
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)

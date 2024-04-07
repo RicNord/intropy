@@ -22,11 +22,11 @@ repos:
       # Run the linter.
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix, --show-fixes]
-{%- if cookiecutter.black_formatting != 'y' %}
+{%- if cookiecutter.code_formatter == 'Ruff' %}
       # Run the formatter.
       - id: ruff-format
 {%- endif %}
-{% if cookiecutter.black_formatting == 'y' %}
+{% if cookiecutter.code_formatter == 'Black' %}
   - repo: https://github.com/psf/black
     rev: 24.3.0
     hooks:

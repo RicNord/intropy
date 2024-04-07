@@ -4,7 +4,10 @@
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "project_short_description": "A nice python package",
     "version": "0.1.0",
-    "black_formatting": "n",
+    "code_formatter": [
+        "Ruff",
+        "Black"
+    ],
     "open_source_license": [
         "MIT",
         "Not open source"
@@ -17,6 +20,7 @@
         "project_slug": "Project slug - This will be used as the name of your package",
         "project_short_description": "Short description of your package",
         "version": "Initial version of the package",
+        "code_formatter": "Select code formatter",
         "open_source_license": "Select open source license",
         "is_cli_tool": "Is this meant to be a CLI tool",
         "git_init": "Initialize git repository"

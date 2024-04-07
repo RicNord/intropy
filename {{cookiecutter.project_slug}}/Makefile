@@ -27,10 +27,10 @@ lint: ## Run lint
 .PHONY: format
 format: ## Run formatting
 	@echo "+ $@"
-{%- if cookiecutter.black_formatting == 'y' %}
-	@black .
-{%- else %}
+{%- if cookiecutter.code_formatter == 'Ruff' %}
 	@ruff format
+{%- elif cookiecutter.code_formatter == 'Black' %}
+	@black .
 {%- endif %}
 
 .PHONY: type
