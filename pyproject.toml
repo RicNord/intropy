@@ -41,7 +41,7 @@ addopts = [
 profile = "black"
 
 [tool.ruff]
-extend-exclude = ['\{\{cookiecutter.project_slug\}\}/', "hooks/"]
+extend-exclude = ['*cookiecutter.project_slug**', "hooks/"]
 
 [tool.ruff.lint]
 select = [
