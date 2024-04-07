@@ -6,6 +6,6 @@ pytest
 pytest-cov
 ruff
 twine
-{%- if cookiecutter.black_formatting == 'y' %}
+{%- if cookiecutter.code_formatter == 'Black' %}
 black
 {%- endif %}
