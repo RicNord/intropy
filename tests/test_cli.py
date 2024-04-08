@@ -1,6 +1,6 @@
 import pathlib
 
-from pyinit import cli
+from intropy import cli
 
 _PROJECT_FILE = "pyproject.toml"
 
