@@ -1,6 +1,6 @@
-# Pyinit
+# intropy
 
-Powered by [Cookiecutter](https://github.com/cookiecutter/cookiecutter), pyinit
+Powered by [Cookiecutter](https://github.com/cookiecutter/cookiecutter), intropy
 is a framework for jump-starting production-ready python projects.
 
 ## Tools
@@ -30,7 +30,7 @@ pip install cookiecutter
 Create project:
 
 ```shell
-cookiecutter https://github.com/RicNord/pyinit
+cookiecutter https://github.com/RicNord/intropy
 ```
 
 You will be prompted for some values. Provide them and you are ready to code!

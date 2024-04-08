@@ -8,7 +8,7 @@ GIT_COMMIT_MESSAGE = """Adding generated project resources
 
 
 This project was generated with the help of:
-https://github.com/RicNord/pyinit"""
+https://github.com/RicNord/intropy"""
 
 
 def executable_exist(name: str) -> bool:
