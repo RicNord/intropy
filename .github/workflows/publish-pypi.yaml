@@ -5,6 +5,12 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Publish to testPyPi'
+        required: true
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -97,6 +103,7 @@ jobs:
 
   publish-to-testpypi:
     name: Publish Python distribution to TestPyPI
+    if: ${{ inputs.publish-to-testpypi }}
     needs:
       - build
     runs-on: ubuntu-latest
