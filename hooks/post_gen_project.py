@@ -59,6 +59,7 @@ def git_init():
 def main():
     if "Not open source" == "{{ cookiecutter.open_source_license }}":
         pathlib.Path("LICENSE").unlink()
+        pathlib.Path(".github/workflows/publish-pypi.yaml").unlink()
 
     if not {{cookiecutter.is_cli_tool}}:
         pathlib.Path("{{ cookiecutter.project_slug }}", "cli.py").unlink()
