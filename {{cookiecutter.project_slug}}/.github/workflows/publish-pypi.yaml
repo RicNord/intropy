@@ -43,9 +43,9 @@ jobs:
     needs:
       - build
     runs-on: ubuntu-latest
-    #environment:
-    #  name: pypi
-    #  url: https://pypi.org/p/intropy
+    environment:
+      name: pypi
+      url: https://pypi.org/p/intropy
     permissions:
       id-token: write # IMPORTANT: mandatory for trusted publishing
 
@@ -84,33 +84,33 @@ jobs:
             ./dist/*.whl
       - name: Create GitHub Release
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: {% raw %}${{ github.token }}{% endraw %}
         run: >-
           gh release create
-          '${{ github.ref_name }}'
-          --repo '${{ github.repository }}'
+          '{% raw %}${{ github.ref_name }}{% endraw %}'
+          --repo '{% raw %}${{ github.repository }}{% endraw %}'
           --notes ""
       - name: Upload artifact signatures to GitHub Release
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: {% raw %}${{ github.token }}{% endraw %}
         # Upload to GitHub Release using the `gh` CLI.
         # `dist/` contains the built packages, and the
         # sigstore-produced signatures and certificates.
         run: >-
           gh release upload
-          '${{ github.ref_name }}' dist/**
-          --repo '${{ github.repository }}'
+          '{% raw %}${{ github.ref_name }}{% endraw %}' dist/**
+          --repo '{% raw %}${{ github.repository }}{% endraw %}'
 
   publish-to-testpypi:
     name: Publish Python distribution to TestPyPI
-    if: ${{ inputs.publish-to-testpypi }}
+    if: {% raw %}${{ inputs.publish-to-testpypi }}{% endraw %}
     needs:
       - build
     runs-on: ubuntu-latest
 
-    #environment:
-    #  name: testpypi
-    #  url: https://test.pypi.org/p/intropy
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/intropy
 
     permissions:
       id-token: write # IMPORTANT: mandatory for trusted publishing
