@@ -16,6 +16,10 @@ pytest-cookies = "*"
 pytest-cov = "*"
 ruff = "*"
 
+[style]
+mypy = "*"
+ruff = "*"
+
 [docs]
 myst-parser = "*"
 sphinx = "*"
