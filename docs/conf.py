@@ -8,6 +8,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import os
 import sys
+
 import intropy
 
 # Execute as file cwd
@@ -28,7 +29,7 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.todo",
     "sphinx.ext.autosummary",
-    "myst_parser", # Import markdown to rst
+    "myst_parser",  # Import markdown to rst
 ]
 
 # If true display todos in docs
