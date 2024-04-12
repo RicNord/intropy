@@ -17,7 +17,6 @@ pytest-cov = "*"
 ruff = "*"
 
 [style]
-mypy = "*"
 ruff = "*"
 
 [docs]

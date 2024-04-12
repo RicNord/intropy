@@ -1,0 +1,4 @@
+ruff
+{%- if cookiecutter.code_formatter == 'Black' %}
+black
+{%- endif %}
