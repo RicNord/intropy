@@ -17,8 +17,14 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.dynamic]
-dependencies = { file = ["requirements.txt"] }
-optional-dependencies = { dev = { file = ["requirements-dev.txt"] } }
+dependencies = { file = ["requirements/requirements.txt"] }
+optional-dependencies = { dev = { file = [
+    "requirements/requirements-dev.txt",
+] }, docs = { file = [
+    "requirements/requirements-docs.txt",
+] }, style = { file = [
+    "requirements/requirements-style.txt",
+] } }
 version = { attr = "intropy.__version__" }
 
 [tool.setuptools.packages.find]
