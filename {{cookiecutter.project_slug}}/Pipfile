@@ -18,3 +18,14 @@ twine = "*"
 black = "*"
 {%- endif %}
 
+[style]
+ruff = "*"
+{%- if cookiecutter.code_formatter == 'Black' %}
+black = "*"
+{%- endif %}
+
+[docs]
+myst-parser = "*"
+sphinx = "*"
+sphinx-autobuild = "*"
+sphinx-rtd-theme = "*"
