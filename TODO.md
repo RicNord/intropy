@@ -1,6 +1,0 @@
-# TODO
-
-## Tooling
-
-- Templates
-    - Issue
