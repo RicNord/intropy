@@ -4,10 +4,10 @@ Welcome to intropy's documentation!
 .. include:: ../README.md
    :parser: myst_parser.sphinx_
 
-CLI Reference
+API Reference
 =============
 
-:doc:`cli/intropy`
+:doc:`api/intropy`
 
 Indices and tables
 ==================
