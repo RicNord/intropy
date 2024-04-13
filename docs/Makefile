@@ -20,10 +20,10 @@ livehtml:
 
 .PHONY: apidocs
 apidocs:
-	sphinx-apidoc -o $(SOURCEDIR)/cli $(PKG)
+	sphinx-apidoc --output-dir $(SOURCEDIR)/api $(PKG)
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 .PHONY: Makefile
 %: Makefile
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(SPHINXBUILD) -b $@ --jobs auto "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
