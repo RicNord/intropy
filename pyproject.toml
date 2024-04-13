@@ -37,6 +37,7 @@ required_plugins = ["pytest-cov", "pytest-cookies"]
 addopts = [
     "--strict-config",
     "--ignore=setup.py",
+    "--ignore={{cookiecutter.project_slug}}",
     "--cov=intropy",
     "--cov-config=pyproject.toml",
     "--cov-append",
@@ -131,6 +132,7 @@ commit_args = ""
 filename = "intropy/__init__.py"
 
 [tool.mypy]
+files = ["intropy/**.py", "tests/**.py"]
 exclude = ["\\{\\{cookiecutter.project_slug\\}\\}*", "hooks*"]
 
 [[tool.mypy.overrides]]
