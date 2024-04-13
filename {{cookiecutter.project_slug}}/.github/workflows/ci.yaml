@@ -41,7 +41,7 @@ jobs:
           pip install tox
 
       - name: Run test suite
-        run: tox r -e py{% raw %}${{ matrix.py }}{% endraw %} -vv
+        run: tox r -e py{% raw %}${{ matrix.py }}{% endraw %} -vv -- -v
 
   checkStyle:
     name: tox env {% raw %}${{ matrix.tox_env }} on ${{ matrix.os }}{% endraw %}
@@ -50,9 +50,10 @@ jobs:
       fail-fast: false
       matrix:
         tox_env:
-          - lint
           - type
+          - lint
           - format
+          - docs
           - pre-commit
         os:
           - ubuntu-latest
@@ -74,4 +75,4 @@ jobs:
           pip install tox
 
       - name: Run test suite
-        run: tox r -e {% raw %}${{ matrix.tox_env }}{% endraw %} -vv
+        run: tox r -e {% raw %}${{ matrix.tox_env }}{% endraw %} -vv -- -v

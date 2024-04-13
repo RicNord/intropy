@@ -2,6 +2,5 @@
 
 ## Tooling
 
-- Docs
 - Templates
     - Issue
