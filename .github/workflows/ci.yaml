@@ -50,9 +50,10 @@ jobs:
       fail-fast: false
       matrix:
         tox_env:
-          - lint
           - type
+          - lint
           - format
+          - docs
           - pre-commit
         os:
           - ubuntu-latest
