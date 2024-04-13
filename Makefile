@@ -13,7 +13,7 @@ test-all: ## Run all tests with tox
 .PHONY: pytest
 pytest: ## Run pytest
 	@echo "+ $@"
-	@pytest tests
+	@pytest
 
 .PHONY: style
 style: lint format type ## Run lint formatting and type check
@@ -32,7 +32,7 @@ format: ## Run formatting
 .PHONY: type
 type: ## Run type checking
 	@echo "+ $@"
-	@mypy .
+	@mypy
 
 .PHONY: auto-fix
 auto-fix: format ## Auto-fix possible style issues
@@ -65,6 +65,7 @@ clean-pytest: # Remove pytest cache
 .PHONY: clean-docs
 clean-docs: # Remove local docs
 	@echo "+ $@"
+	@rm -rf docs/api
 	@rm -rf docs/_build
 
 .PHONY: clean-build

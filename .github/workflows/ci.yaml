@@ -41,7 +41,7 @@ jobs:
           pip install tox
 
       - name: Run test suite
-        run: tox r -e py${{ matrix.py }} -vv
+        run: tox r -e py${{ matrix.py }} -vv -- -v
 
   checkStyle:
     name: tox env ${{ matrix.tox_env }} on ${{ matrix.os }}
@@ -74,4 +74,4 @@ jobs:
           pip install tox
 
       - name: Run test suite
-        run: tox r -e ${{ matrix.tox_env }} -vv
+        run: tox r -e ${{ matrix.tox_env }} -vv -- -v
