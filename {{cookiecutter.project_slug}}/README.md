@@ -18,6 +18,8 @@
 - TODO | How to use this project
 
 {% if cookiecutter.is_cli_tool -%}
+For CLI options, please see:
+
 ```shell
 {{ cookiecutter.project_slug.lower().replace('_', '-') }} --help
 ```
@@ -45,10 +47,10 @@ Or create and manage your virtual environment more manually:
 
 ```shell
 python3 -m venv ./venv
-source ./venv/bin/activate
+source ./venv/bin/activate # Linux and MacOS
+venv\Scripts\activate # Windows
 
-pip install -r requirements.txt
-pip install -r requirements-dev.txt
+pip install --editable .[dev]
 ```
 
 ### Run tests
@@ -88,7 +90,14 @@ bump-my-version bump --help
 Bump my version is configured to create a `new commit` and `tag` it with the
 new version when a version is bumped.
 
-To publish the new version to [PyPi](https://pypi.org/) run:
+When a new tag is pushed to github the
+[publish-pypi workflow](./.github/workflows/publish-pypi.yaml) is triggered and
+will build and publish the new version to PyPi. You will need to configure
+[Trusted Publishing](https://docs.pypi.org/trusted-publishers/) for this to
+work. There is also an option to trigger the workflow manually and publish to
+the [test](https://test.pypi.org/) instance of PyPi.
+
+To manually publish to [PyPi](https://pypi.org/) run:
 
 ```shell
 make publish-test # Publish pkg to PyPi test instance
@@ -101,11 +110,16 @@ additional target repositories refer to your
 [.pypirc](https://packaging.python.org/en/latest/specifications/pypirc/)
 configuration file.
 
-### Upgrade dependencies
+### Documentation
 
-To upgrade dependencies run:
+[Sphinx](https://www.sphinx-doc.org/) is used to create documentation for the
+project. To generate:
 
 ```shell
-make upgrade-deps
+cd docs
+make apidocs # Generates API reference documentation for the code of the project
+make html # Generates HTML that can be viwed in the browser
 ```
 
+This documentation can be hosted on eg. [Read The
+Docs](https://about.readthedocs.com/) for easy accessibility.
