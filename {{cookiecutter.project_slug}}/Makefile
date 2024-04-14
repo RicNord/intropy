@@ -8,12 +8,12 @@ help: ## This help message
 .PHONY: test-all
 test-all: ## Run all tests with tox
 	@echo "+ $@"
-	@tox
+	tox
 
 .PHONY: pytest
 pytest: ## Run pytest
 	@echo "+ $@"
-	@pytest
+	pytest
 
 .PHONY: style
 style: lint format type ## Run lint formatting and type check
@@ -22,70 +22,70 @@ style: lint format type ## Run lint formatting and type check
 .PHONY: lint
 lint: ## Run lint
 	@echo "+ $@"
-	@ruff check
+	ruff check
 
 .PHONY: format
 format: ## Run formatting
 	@echo "+ $@"
 {%- if cookiecutter.code_formatter == 'Ruff' %}
-	@ruff format
+	ruff format
 {%- elif cookiecutter.code_formatter == 'Black' %}
-	@black .
+	black .
 {%- endif %}
 
 .PHONY: type
 type: ## Run type checking
 	@echo "+ $@"
-	@mypy
+	mypy
 
 .PHONY: auto-fix
 auto-fix: format ## Auto-fix possible style issues
 	@echo "+ $@"
-	@ruff check --fix --show-fixes
+	ruff check --fix --show-fixes
 
 .PHONY: build
 build: clean-build ## Build distribution
 	@echo "+ $@"
-	@python -m build
-	@ls -l dist
+	python -m build
+	ls -l dist
 
 .PHONY: clean-tox
 clean-tox: # Remove tox testing artifacts
 	@echo "+ $@"
-	@rm -rf .tox/
+	rm -rf .tox/
 
 .PHONY: clean-coverage
 clean-coverage: # Remove coverage reports
 	@echo "+ $@"
-	@rm -rf htmlcov/
-	@rm -rf .coverage
-	@rm -rf coverage.xml
+	rm -rf htmlcov/
+	rm -rf .coverage
+	rm -rf coverage.xml
 
 .PHONY: clean-pytest
 clean-pytest: # Remove pytest cache
 	@echo "+ $@"
-	@rm -rf .pytest_cache/
+	rm -rf .pytest_cache/
 
 .PHONY: clean-docs
 clean-docs: # Remove local docs
 	@echo "+ $@"
-	@rm -rf docs/api
-	@rm -rf docs/_build
+	rm -rf docs/api
+	rm -rf docs/_build
 
 .PHONY: clean-build
 clean-build: # Remove build artifacts
 	@echo "+ $@"
-	@rm -rf build/
-	@rm -rf dist/
-	@find . -name '*.egg-info' -exec rm -rf {} +
-	@find . -name '*.egg' -exec rm -f {} +
+	rm -rf build/
+	rm -rf dist/
+	find . -name '*.egg-info' -exec rm -rf {} +
+	find . -name '*.egg' -exec rm -f {} +
 
 .PHONY: clean-pyc
 clean-pyc: # Remove Python file artifacts
 	@echo "+ $@"
-	@find . -type d -name '__pycache__' -exec rm -rf {} +
-	@find . -type f -name '*.pyc' -exec rm -f {} +
-	@find . -type f -name '*.pyo' -exec rm -f {} +
+	find . -type d -name '__pycache__' -exec rm -rf {} +
+	find . -type f -name '*.pyc' -exec rm -f {} +
+	find . -type f -name '*.pyo' -exec rm -f {} +
 
 .PHONY: clean
 clean: clean-build clean-pyc clean-tox clean-coverage clean-pytest clean-docs ## Remove all file artifacts
@@ -94,15 +94,15 @@ clean: clean-build clean-pyc clean-tox clean-coverage clean-pytest clean-docs ##
 .PHONY: gen-req
 gen-req: ## Generates new requirements{,-dev}.txt files from Pipfile.lock
 	@echo "+ $@"
-	@pipenv requirements --dev-only | sed '/^-i /d' > requirements/requirements-dev.txt
-	@pipenv requirements --categories docs | sed '/^-i /d' > requirements/requirements-docs.txt
-	@pipenv requirements --categories style | sed '/^-i /d' > requirements/requirements-style.txt
-	@pipenv requirements | sed '/^-i /d' > requirements/requirements.txt
+	pipenv requirements --dev-only | sed '/^-i /d' > requirements/requirements-dev.txt
+	pipenv requirements --categories docs | sed '/^-i /d' > requirements/requirements-docs.txt
+	pipenv requirements --categories style | sed '/^-i /d' > requirements/requirements-style.txt
+	pipenv requirements | sed '/^-i /d' > requirements/requirements.txt
 
 .PHONY: lock
 lock: # Updates the Pipfile.lock
 	@echo "+ $@"
-	@pipenv lock --dev
+	pipenv lock --dev
 
 .PHONY: upgrade-deps
 upgrade-deps: lock gen-req ## Upgrades dependencies
@@ -111,9 +111,9 @@ upgrade-deps: lock gen-req ## Upgrades dependencies
 .PHONY: publish-test
 publish-test: build ## Publish pkg to PyPi test instance
 	@echo "+ $@"
-	@twine upload -r testpypi dist/*
+	twine upload -r testpypi dist/*
 
 .PHONY: publish
 publish: build ## Publish pkg to PyPi
 	@echo "+ $@"
-	@twine upload dist/*
+	twine upload dist/*
