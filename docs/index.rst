@@ -7,7 +7,7 @@ Welcome to Intropy's documentation!
 API Reference
 =============
 
-:doc:`api/intropy`
+:doc:`api/modules`
 
 Indices and tables
 ==================

@@ -7,7 +7,7 @@ Welcome to {{ cookiecutter.project_slug }}'s documentation!
 API Reference
 =============
 
-:doc:`api/{{ cookiecutter.project_slug }}`
+:doc:`api/modules`
 
 Indices and tables
 ==================
