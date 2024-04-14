@@ -69,7 +69,6 @@ clean-pytest: # Remove pytest cache
 .PHONY: clean-docs
 clean-docs: # Remove local docs
 	@echo "+ $@"
-	rm -rf docs/api
 	rm -rf docs/_build
 
 .PHONY: clean-build
