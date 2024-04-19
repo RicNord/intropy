@@ -14,6 +14,11 @@
     ],
     "is_cli_tool": true,
     "git_init": true,
+    "ci_provider": [
+        "Github",
+        "Azure DevOps",
+        "No CI"
+    ],
     "__prompts__": {
         "full_name": "Author full name",
         "project_name": "Project name (Use: alphanumericals, space, -, and _)",
@@ -23,6 +28,7 @@
         "code_formatter": "Select code formatter",
         "open_source_license": "Select open source license",
         "is_cli_tool": "Is this meant to be a CLI tool",
+        "ci_provider": "Pick your CI provider",
         "git_init": "Initialize git repository"
     }
 }
