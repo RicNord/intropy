@@ -1,0 +1,98 @@
+pr:
+  branches:
+    include:
+      - main
+      - release
+
+jobs:
+  - job: TestMatrix
+    displayName: 'Run Tests'
+    strategy:
+      matrix:
+        ubuntu_3_11:
+          imageName: 'ubuntu-latest'
+          pythonVersion: '3.11'
+        ubuntu_3_10:
+          imageName: 'ubuntu-latest'
+          pythonVersion: '3.10'
+        ubuntu_3_9:
+          imageName: 'ubuntu-latest'
+          pythonVersion: '3.9'
+        windows_3_11:
+          imageName: 'windows-latest'
+          pythonVersion: '3.11'
+        windows_3_10:
+          imageName: 'windows-latest'
+          pythonVersion: '3.10'
+        windows_3_9:
+          imageName: 'windows-latest'
+          pythonVersion: '3.9'
+        macos_3_11:
+          imageName: 'macos-latest'
+          pythonVersion: '3.11'
+        macos_3_10:
+          imageName: 'macos-latest'
+          pythonVersion: '3.10'
+        macos_3_9:
+          imageName: 'macos-latest'
+          pythonVersion: '3.9'
+    continueOnError: true
+    pool:
+      vmImage: $(imageName)
+    steps:
+      - checkout: self
+        fetchDepth: 0
+
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: $(pythonVersion)
+          addToPath: true
+
+      - script: |
+          python -m pip install --upgrade pip
+          pip install tox
+        displayName: 'Install dependencies'
+
+      - script: |
+          tox -e py$(pythonVersion) -vv -- -v
+        displayName: 'Run test suite'
+
+  - job: CheckStyleMatrix
+    displayName: 'Check Style'
+    strategy:
+      matrix:
+        type:
+          tox_env: 'type'
+          imageName: 'ubuntu-latest'
+        lint:
+          tox_env: 'lint'
+          imageName: 'ubuntu-latest'
+        format:
+          tox_env: 'format'
+          imageName: 'ubuntu-latest'
+        docs:
+          tox_env: 'docs'
+          imageName: 'ubuntu-latest'
+        pre_commit:
+          tox_env: 'pre-commit'
+          imageName: 'ubuntu-latest'
+    continueOnError: true
+    pool:
+      vmImage: $(imageName)
+    steps:
+      - checkout: self
+        fetchDepth: 0
+
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3.11'
+          addToPath: true
+
+      - script: |
+          python -m pip install --upgrade pip
+          pip install tox
+        displayName: 'Install dependencies'
+
+      - script: |
+          tox -e $(tox_env) -vv -- -v
+        displayName: 'Run tox environment'

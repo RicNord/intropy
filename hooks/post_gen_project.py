@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import pathlib
 import subprocess
-from shutil import which
+from shutil import which, rmtree
 import sys
 
 GIT_COMMIT_MESSAGE = """Adding generated project resources
@@ -67,6 +67,14 @@ def main():
 
     if {{cookiecutter.git_init}}:
         git_init()
+
+    if "No CI" == "{{ cookiecutter.ci_provider }}":
+        rmtree(".github")
+        rmtree(".azuredevops")
+    elif "Github" == "{{ cookiecutter.ci_provider }}":
+        rmtree(".azuredevops")
+    elif "Azure DevOps" == "{{ cookiecutter.ci_provider }}":
+        rmtree(".github")
 
 
 if __name__ == "__main__":
