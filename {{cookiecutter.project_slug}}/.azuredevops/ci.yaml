@@ -9,31 +9,31 @@ jobs:
     displayName: 'Run Tests'
     strategy:
       matrix:
-        ubuntu_3_11:
+        ubuntu_py_3_11:
           imageName: 'ubuntu-latest'
           pythonVersion: '3.11'
-        ubuntu_3_10:
+        ubuntu_py_3_10:
           imageName: 'ubuntu-latest'
           pythonVersion: '3.10'
-        ubuntu_3_9:
+        ubuntu_py_3_9:
           imageName: 'ubuntu-latest'
           pythonVersion: '3.9'
-        windows_3_11:
+        windows_py_3_11:
           imageName: 'windows-latest'
           pythonVersion: '3.11'
-        windows_3_10:
+        windows_py_3_10:
           imageName: 'windows-latest'
           pythonVersion: '3.10'
-        windows_3_9:
+        windows_py_3_9:
           imageName: 'windows-latest'
           pythonVersion: '3.9'
-        macos_3_11:
+        macos_py_3_11:
           imageName: 'macos-latest'
           pythonVersion: '3.11'
-        macos_3_10:
+        macos_py_3_10:
           imageName: 'macos-latest'
           pythonVersion: '3.10'
-        macos_3_9:
+        macos_py_3_9:
           imageName: 'macos-latest'
           pythonVersion: '3.9'
     continueOnError: true

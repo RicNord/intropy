@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   test:
-    name: test {% raw %}${{ matrix.py }} on ${{ matrix.os }}{% endraw %}
+    name: Test python {% raw %}${{ matrix.py }} on ${{ matrix.os }}{% endraw %}
     runs-on: {% raw %}${{ matrix.os }}{% endraw %}
     strategy:
       fail-fast: false

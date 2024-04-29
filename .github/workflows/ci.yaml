@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   test:
-    name: test ${{ matrix.py }} on ${{ matrix.os }}
+    name: Test python ${{ matrix.py }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
