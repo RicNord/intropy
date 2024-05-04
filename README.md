@@ -28,8 +28,12 @@ python project will be generated and configured automatically with:
 - [Bump my version](https://callowayproject.github.io/bump-my-version/) | Bump
   semantic version
 - [Sphinx](https://www.sphinx-doc.org/) | Documentation tool
-- Github workflows | CI and publishing to PyPi
-- Github templates | Pull Requests and Issues
+- DevOps platform options
+  - Github
+    - Github workflows | CI and publishing to PyPi
+    - Github templates | Pull Requests and Issues
+  - Azure Devops
+    - Azure pipelines | CI
 - Makefile for convenience
 
 ## Optional feature alternatives
