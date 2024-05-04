@@ -2,7 +2,12 @@
 name = "{{ cookiecutter.project_slug }}"
 description = "{{ cookiecutter.project_short_description }}"
 readme = "README.md"
+{% if cookiecutter.project_type == 'Application' -%}
 dynamic = ["version", "dependencies", "optional-dependencies"]
+{%- elif cookiecutter.project_type == 'Distributable package' -%}
+dynamic = ["version"]
+dependencies = []
+{%- endif -%}
 {%- if cookiecutter.open_source_license == 'MIT' %}
 license = { file = "LICENSE" }
 {%- endif %}
@@ -20,11 +25,36 @@ classifiers = [
 {{ cookiecutter.project_slug.lower().replace('_', '-') }} = "{{ cookiecutter.project_slug }}.cli:main"
 {%- endif %}
 
+{% if cookiecutter.project_type == 'Distributable package' -%}
+[project.optional-dependencies]
+dev = [
+    "build",
+    "bump-my-version",
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "twine",
+    {%- if cookiecutter.code_formatter == 'Black' %}
+    "black",
+    {%- endif %}
+]
+style = [
+    "ruff",
+    {%- if cookiecutter.code_formatter == 'Black' %}
+    "black",
+    {%- endif %}
+]
+docs = ["myst-parser", "sphinx", "sphinx-autobuild", "sphinx-rtd-theme"]
+{%- endif %}
+
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.dynamic]
+{% if cookiecutter.project_type == 'Application' -%}
 dependencies = { file = ["requirements/requirements.txt"] }
 optional-dependencies = { dev = { file = [
     "requirements/requirements-dev.txt",
@@ -33,6 +63,7 @@ optional-dependencies = { dev = { file = [
 ] }, style = { file = [
     "requirements/requirements-style.txt",
 ] } }
+{%- endif %}
 version = { attr = "{{ cookiecutter.project_slug }}.__version__" }
 
 [tool.setuptools.packages.find]

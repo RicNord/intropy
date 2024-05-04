@@ -90,6 +90,8 @@ clean-pyc: # Remove Python file artifacts
 clean: clean-build clean-pyc clean-tox clean-coverage clean-pytest clean-docs ## Remove all file artifacts
 	@echo "+ $@"
 
+{%- if cookiecutter.project_type == 'Application' %}
+
 .PHONY: gen-req
 gen-req: ## Generates new requirements{,-dev}.txt files from Pipfile.lock
 	@echo "+ $@"
@@ -106,6 +108,7 @@ lock: # Updates the Pipfile.lock
 .PHONY: upgrade-deps
 upgrade-deps: lock gen-req ## Upgrades dependencies
 	@echo "+ $@"
+{%- endif %}
 
 .PHONY: publish-test
 publish-test: build ## Publish pkg to PyPi test instance

@@ -19,6 +19,10 @@
         "Azure DevOps",
         "No CI"
     ],
+    "project_type": [
+        "Application",
+        "Distributable package"
+    ],
     "__prompts__": {
         "full_name": "Author full name",
         "project_name": "Project name (Use: alphanumericals, space, -, and _)",
@@ -28,7 +32,8 @@
         "code_formatter": "Select code formatter",
         "open_source_license": "Select open source license",
         "is_cli_tool": "Is this meant to be a CLI tool",
+        "git_init": "Initialize git repository",
         "ci_provider": "Pick your CI provider",
-        "git_init": "Initialize git repository"
+        "project_type": "Type of project: \n'Application' will pin the projects dependency versions, intended for applications that you will deploy and run in production. \n'Distributable package' is intended for libraries that others will install with eg. pip, and will not pin dependency versions"
     }
 }
