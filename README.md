@@ -15,7 +15,8 @@ python project will be generated and configured automatically with:
 
 ## Features
 
-- [Ruff](https://docs.astral.sh/ruff/) | Linter and formatter
+- [Ruff](https://docs.astral.sh/ruff/) | Linter and formatter (Optionally
+  strict [Black](https://black.readthedocs.io/en/stable/) as code formatter)
 - [Pytest](https://docs.pytest.org/en/latest/) | Test framework
 - [Tox](https://tox.wiki/en/latest/) | Standardized testing and automation
 - [Coverage](https://coverage.readthedocs.io/en/latest/) | Code coverage
@@ -35,10 +36,6 @@ python project will be generated and configured automatically with:
   - Azure Devops
     - Azure pipelines | CI
 - Makefile for convenience
-
-## Optional feature alternatives
-
-- [Black](https://black.readthedocs.io/en/stable/) | Code formatter
 
 ## Usage
 
