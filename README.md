@@ -20,7 +20,10 @@ python project will be generated and configured automatically with:
 - [Tox](https://tox.wiki/en/latest/) | Standardized testing and automation
 - [Coverage](https://coverage.readthedocs.io/en/latest/) | Code coverage
 - [Mypy](https://www.mypy-lang.org/) | Static type checker
-- [Pipenv](https://pipenv.pypa.io/en/latest/) | Package management
+- Package and environment management
+  - Deployable applications: [Pipenv](https://pipenv.pypa.io/en/latest/) |
+    Version pinning and virtual environment setup
+  - Distributable packages: Pyproject explicit defined dependencies
 - [Pre-commit](https://pre-commit.com/) | pre-commit hooks
 - [Bump my version](https://callowayproject.github.io/bump-my-version/) | Bump
   semantic version
@@ -49,7 +52,7 @@ cookiecutter https://github.com/RicNord/intropy
 
 You will be prompted for some values. After that the project will be generated!
 
-### (Optional) CLI
+### (Optional) Standalone CLI
 
 A wrapper around the `cookiecutter` CLI is also provided and can be installed
 with:

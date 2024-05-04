@@ -34,6 +34,7 @@ make help
 ```
 
 ### Local environment setup
+{%- if cookiecutter.project_type == 'Application' %}
 
 It is recommended to use [Pipenv](https://pipenv.pypa.io/en/latest/index.html),
 to create a virtual environment with necessary dependencies run:
@@ -52,6 +53,17 @@ venv\Scripts\activate # Windows
 
 pip install --editable .[dev]
 ```
+{%- elif cookiecutter.project_type == 'Distributable package' %}
+
+```shell
+python3 -m venv ./venv
+source ./venv/bin/activate # Linux and MacOS
+venv\Scripts\activate # Windows
+
+pip install --editable .[dev]
+```
+
+{% endif -%}
 
 ### Run tests
 

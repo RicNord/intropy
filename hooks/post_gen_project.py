@@ -76,6 +76,10 @@ def main():
     elif "Azure DevOps" == "{{ cookiecutter.ci_provider }}":
         rmtree(".github")
 
+    if "Application" != "{{ cookiecutter.project_type }}":
+        pathlib.Path("Pipfile").unlink()
+        rmtree("requirements")
+
 
 if __name__ == "__main__":
     main()
