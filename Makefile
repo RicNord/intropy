@@ -87,20 +87,3 @@ clean-pyc: # Remove Python file artifacts
 .PHONY: clean
 clean: clean-build clean-pyc clean-tox clean-coverage clean-pytest clean-docs ## Remove all file artifacts
 	@echo "+ $@"
-
-.PHONY: gen-req
-gen-req: ## Generates new requirements{,-dev}.txt files from Pipfile.lock
-	@echo "+ $@"
-	pipenv requirements --dev-only | sed '/^-i /d' > requirements/requirements-dev.txt
-	pipenv requirements --categories docs | sed '/^-i /d' > requirements/requirements-docs.txt
-	pipenv requirements --categories style | sed '/^-i /d' > requirements/requirements-style.txt
-	pipenv requirements | sed '/^-i /d' > requirements/requirements.txt
-
-.PHONY: lock
-lock: # Updates the Pipfile.lock
-	@echo "+ $@"
-	pipenv lock --dev
-
-.PHONY: upgrade-deps
-upgrade-deps: lock gen-req ## Upgrades dependencies
-	@echo "+ $@"
