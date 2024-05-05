@@ -3,6 +3,11 @@
     "project_name": "Python Project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "project_short_description": "A nice python package",
+    "project_type": [
+        "Application",
+        "Library"
+    ],
+    "is_cli_tool": true,
     "version": "0.1.0",
     "code_formatter": [
         "Ruff",
@@ -12,28 +17,23 @@
         "MIT",
         "Not open source"
     ],
-    "is_cli_tool": true,
-    "git_init": true,
     "ci_provider": [
         "Github",
         "Azure DevOps",
         "No CI"
     ],
-    "project_type": [
-        "Application",
-        "Library"
-    ],
+    "git_init": true,
     "__prompts__": {
         "full_name": "Author full name",
         "project_name": "Project name (Use: alphanumericals, space, -, and _)",
         "project_slug": "Project slug - This will be used as the name of your package",
         "project_short_description": "Short description of your package",
+        "project_type": "Type of project",
+        "is_cli_tool": "Is this meant to be a CLI tool",
         "version": "Initial version of the package",
         "code_formatter": "Select code formatter",
         "open_source_license": "Select open source license",
-        "is_cli_tool": "Is this meant to be a CLI tool",
-        "git_init": "Initialize git repository",
         "ci_provider": "Pick your CI provider",
-        "project_type": "Type of project"
+        "git_init": "Initialize git repository"
     }
 }
