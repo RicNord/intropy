@@ -4,19 +4,27 @@ from typing import Optional, Sequence
 
 from cookiecutter.main import cookiecutter
 
+from intropy import setup_logging
+
 logger = logging.getLogger(__name__)
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     """Entry point"""
 
-    logger.info("Parse arguments")
+    setup_logging()
+    logger.debug(f"Got {argv=}")
 
     parser = argparse.ArgumentParser(
         description="Generate a new python project",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    parser.add_argument("template", help="Path to template to generate")
+    parser.add_argument(
+        "template",
+        help="Path to template to generate",
+        nargs="?",
+        default="https://github.com/RicNord/intropy",
+    )
     parser.add_argument(
         "extra_context",
         nargs="*",
