@@ -52,7 +52,7 @@ LOGGING_CONFIG = {
 
 def setup_logging():
     logging.config.dictConfig(LOGGING_CONFIG)
-{%- elif cookiecutter.project_type == 'Distributable package' -%}
+{%- elif cookiecutter.project_type == 'Library' -%}
 import logging
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())

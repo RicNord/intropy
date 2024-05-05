@@ -24,11 +24,12 @@ python project will be generated and configured automatically with:
 - Package and environment management
   - Deployable applications: [Pipenv](https://pipenv.pypa.io/en/latest/) |
     Version pinning and virtual environment setup
-  - Distributable packages: Pyproject explicit defined dependencies
+  - Libraries: Pyproject explicit defined dependencies
 - [Pre-commit](https://pre-commit.com/) | pre-commit hooks
 - [Bump my version](https://callowayproject.github.io/bump-my-version/) | Bump
   semantic version
 - [Sphinx](https://www.sphinx-doc.org/) | Documentation tool
+- [Logging](https://docs.python.org/3/library/logging.html) boilerplate
 - DevOps platform options
   - Github
     - Github workflows | CI and publishing to PyPi
