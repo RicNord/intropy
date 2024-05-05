@@ -1,6 +1,7 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
 description = "{{ cookiecutter.project_short_description }}"
+authors = [{ name = "{{ cookiecutter.full_name }}" }]
 readme = "README.md"
 {% if cookiecutter.project_type == 'Application' -%}
 dynamic = ["version", "dependencies", "optional-dependencies"]
@@ -47,7 +48,8 @@ style = [
     {%- endif %}
 ]
 docs = ["myst-parser", "sphinx", "sphinx-autobuild", "sphinx-rtd-theme"]
-{%- endif %}
+
+{% endif -%}
 
 [build-system]
 requires = ["setuptools"]
