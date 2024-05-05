@@ -80,6 +80,9 @@ def main():
         pathlib.Path("Pipfile").unlink()
         rmtree("requirements")
 
+    if (not "Application" == "{{ cookiecutter.project_type }}") or {{cookiecutter.is_cli_tool}}:
+        pathlib.Path("{{ cookiecutter.project_slug }}", "main.py").unlink()
+
 
 if __name__ == "__main__":
     main()
