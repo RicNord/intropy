@@ -53,7 +53,7 @@ venv\Scripts\activate # Windows
 
 pip install --editable .[dev]
 ```
-{%- elif cookiecutter.project_type == 'Distributable package' %}
+{%- elif cookiecutter.project_type == 'Library' %}
 
 ```shell
 python3 -m venv ./venv
