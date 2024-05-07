@@ -4,7 +4,7 @@
 [![Build Status](https://github.com/RicNord/intropy/actions/workflows/ci.yaml/badge.svg)](https://github.com/RicNord/intropy/actions)
 
 Powered by [Cookiecutter](https://github.com/cookiecutter/cookiecutter),
-intropy is a framework for jump-starting production-ready python projects. The
+intropy is a framework for jump-starting production-grade python projects. The
 python project will be generated and configured automatically with:
 
 - Build system
