@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/intropy
+      url: https://pypi.org/p/{{ cookiecutter.project_slug }}
     permissions:
       id-token: write # IMPORTANT: mandatory for trusted publishing
 
@@ -110,7 +110,7 @@ jobs:
 
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/intropy
+      url: https://test.pypi.org/p/{{ cookiecutter.project_slug }}
 
     permissions:
       id-token: write # IMPORTANT: mandatory for trusted publishing
