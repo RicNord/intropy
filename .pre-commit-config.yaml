@@ -1,7 +1,7 @@
 exclude: '{{cookiecutter.project_slug}}'
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -13,12 +13,12 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.16
+    rev: v0.18
     hooks:
       - id: validate-pyproject
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.3.4
+    rev: v0.4.5
     hooks:
       # Run the linter.
       - id: ruff

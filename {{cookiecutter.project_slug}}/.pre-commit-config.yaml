@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -12,12 +12,12 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.16
+    rev: v0.18
     hooks:
       - id: validate-pyproject
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.3.4
+    rev: v0.4.5
     hooks:
       # Run the linter.
       - id: ruff
@@ -28,7 +28,7 @@ repos:
 {%- endif %}
 {% if cookiecutter.code_formatter == 'Black' %}
   - repo: https://github.com/psf/black
-    rev: 24.3.0
+    rev: 24.4.2
     hooks:
       - id: black
 {% endif %}
