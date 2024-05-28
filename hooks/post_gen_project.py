@@ -65,9 +65,6 @@ def main():
         pathlib.Path("{{ cookiecutter.project_slug }}", "cli.py").unlink()
         pathlib.Path("tests", "test_cli.py").unlink()
 
-    if {{cookiecutter.git_init}}:
-        git_init()
-
     if "No CI" == "{{ cookiecutter.ci_provider }}":
         rmtree(".github")
         rmtree(".azuredevops")
@@ -82,6 +79,9 @@ def main():
 
     if (not "Application" == "{{ cookiecutter.project_type }}") or {{cookiecutter.is_cli_tool}}:
         pathlib.Path("{{ cookiecutter.project_slug }}", "main.py").unlink()
+
+    if {{cookiecutter.git_init}}:
+        git_init()
 
 
 if __name__ == "__main__":

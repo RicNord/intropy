@@ -41,6 +41,7 @@ to create a virtual environment with necessary dependencies run:
 
 ```shell
 pipenv shell
+pipenv lock
 pipenv sync --dev
 ```
 
@@ -63,7 +64,7 @@ venv\Scripts\activate # Windows
 pip install --editable .[dev]
 ```
 
-{% endif -%}
+{%- endif %}
 
 ### Run tests
 
