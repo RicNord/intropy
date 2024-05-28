@@ -9,6 +9,11 @@ jobs:
     displayName: 'Run Tests'
     strategy:
       matrix:
+{%- if cookiecutter.project_type == 'Application' %}
+        ubuntu_py_3_11:
+          imageName: 'ubuntu-latest'
+          pythonVersion: '3.11'
+{%- elif cookiecutter.project_type == 'Library' %}
         ubuntu_py_3_11:
           imageName: 'ubuntu-latest'
           pythonVersion: '3.11'
@@ -36,6 +41,7 @@ jobs:
         macos_py_3_9:
           imageName: 'macos-latest'
           pythonVersion: '3.9'
+{%- endif %}
     continueOnError: true
     pool:
       vmImage: $(imageName)

@@ -18,13 +18,21 @@ jobs:
       fail-fast: false
       matrix:
         py:
+{%- if cookiecutter.project_type == 'Application' %}
+          - "3.11"
+{%- elif cookiecutter.project_type == 'Library' %}
           - "3.11"
           - "3.10"
           - "3.9"
+{%- endif %}
         os:
+{%- if cookiecutter.project_type == 'Application' %}
+          - ubuntu-latest
+{%- elif cookiecutter.project_type == 'Library' %}
           - ubuntu-latest
           - windows-latest
           - macos-latest
+{%- endif %}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -56,9 +64,13 @@ jobs:
           - docs
           - pre-commit
         os:
+{%- if cookiecutter.project_type == 'Application' %}
+          - ubuntu-latest
+{%- elif cookiecutter.project_type == 'Library' %}
           - ubuntu-latest
           - windows-latest
           - macos-latest
+{%- endif %}
     steps:
       - uses: actions/checkout@v4
         with:
