@@ -5,6 +5,31 @@ pr:
       - release
 
 jobs:
+{%- if cookiecutter.project_type == 'Application' %}
+  - job: RequirementsCheck
+    displayName: 'Requirements check'
+    steps:
+      - checkout: self
+        fetchDepth: 0
+
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3.11'
+          addToPath: true
+
+      - script: |
+          python -m pip install --upgrade pip
+          pip install pipenv
+        displayName: 'Install dependencies'
+
+      - script: |
+          pipenv requirements | sed '/^-i /d' | diff --color=auto requirements/requirements.txt -
+          pipenv requirements --dev-only | sed '/^-i /d' | diff --color=auto requirements/requirements-dev.txt -
+          pipenv requirements --categories docs | sed '/^-i /d' | diff --color=auto requirements/requirements-docs.txt -
+          pipenv requirements --categories style | sed '/^-i /d' | diff --color=auto requirements/requirements-style.txt -
+        displayName: 'Check if requirements diff from pipenv and requirements.txt files'
+{%- endif %}
+
   - job: TestMatrix
     displayName: 'Run Tests'
     strategy:
