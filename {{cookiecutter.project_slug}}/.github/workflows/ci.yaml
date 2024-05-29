@@ -11,6 +11,33 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+{%- if cookiecutter.project_type == 'Application' %}
+  requirementsCheck:
+    name: 'Requirements check'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv
+
+      - name: Check if requirements diff from pipenv and requirements.txt files
+        run: |
+          pipenv requirements | sed '/^-i /d' | diff --color=auto requirements/requirements.txt -
+          pipenv requirements --dev-only | sed '/^-i /d' | diff --color=auto requirements/requirements-dev.txt -
+          pipenv requirements --categories docs | sed '/^-i /d' | diff --color=auto requirements/requirements-docs.txt -
+          pipenv requirements --categories style | sed '/^-i /d' | diff --color=auto requirements/requirements-style.txt -
+{%- endif %}
+
   test:
     name: Test python {% raw %}${{ matrix.py }} on ${{ matrix.os }}{% endraw %}
     runs-on: {% raw %}${{ matrix.os }}{% endraw %}
