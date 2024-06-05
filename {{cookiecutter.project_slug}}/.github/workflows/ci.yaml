@@ -31,6 +31,7 @@ jobs:
           pip install pipenv
 
       - name: Check if requirements diff from pipenv and requirements.txt files
+        shell: bash # Includes -o pipefail
         run: |
           pipenv requirements | sed '/^-i /d' | diff --color=auto requirements/requirements.txt -
           pipenv requirements --dev-only | sed '/^-i /d' | diff --color=auto requirements/requirements-dev.txt -
