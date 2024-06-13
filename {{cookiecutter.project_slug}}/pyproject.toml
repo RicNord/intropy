@@ -172,4 +172,4 @@ commit_args = ""
 filename = "{{ cookiecutter.project_slug }}/__init__.py"
 
 [tool.mypy]
-files = ["{{ cookiecutter.project_slug }}/**.py", "tests/**.py"]
+files = ["{{ cookiecutter.project_slug }}/**/*.py", "tests/**/*.py"]

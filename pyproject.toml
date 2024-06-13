@@ -139,7 +139,7 @@ commit_args = ""
 filename = "intropy/__init__.py"
 
 [tool.mypy]
-files = ["intropy/**.py", "tests/**.py"]
+files = ["intropy/**/*.py", "tests/**/*.py"]
 exclude = ["\\{\\{cookiecutter.project_slug\\}\\}*", "hooks*"]
 
 [[tool.mypy.overrides]]
