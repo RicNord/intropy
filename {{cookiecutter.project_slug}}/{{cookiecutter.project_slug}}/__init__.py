@@ -33,7 +33,7 @@ LOGGING_CONFIG = {
             "level": "DEBUG",
             "formatter": "standard_utc",
             "class": "logging.StreamHandler",
-            "stream": "ext://sys.stdout",
+            "stream": "ext://sys.stderr",
         },
     },
     "loggers": {
