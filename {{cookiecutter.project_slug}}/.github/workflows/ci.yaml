@@ -90,7 +90,9 @@ jobs:
           - lint
           - format
           - docs
+{%- if cookiecutter.git_init %}
           - pre-commit
+{%- endif %}
         os:
 {%- if cookiecutter.project_type == 'Application' %}
           - ubuntu-latest
