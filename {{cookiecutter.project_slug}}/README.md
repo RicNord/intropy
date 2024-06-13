@@ -23,6 +23,7 @@ For CLI options, please see:
 ```shell
 {{ cookiecutter.project_slug.lower().replace('_', '-') }} --help
 ```
+
 {%- endif %}
 
 ## Development
@@ -34,6 +35,7 @@ make help
 ```
 
 ### Local environment setup
+
 {%- if cookiecutter.project_type == 'Application' %}
 
 It is recommended to use [Pipenv](https://pipenv.pypa.io/en/latest/index.html),
@@ -54,6 +56,7 @@ venv\Scripts\activate # Windows
 
 pip install --editable .[dev]
 ```
+
 {%- elif cookiecutter.project_type == 'Library' %}
 
 ```shell
@@ -103,6 +106,7 @@ bump-my-version bump --help
 Bump my version is configured to create a `new commit` and `tag` it with the
 new version when a version is bumped.
 
+{%- if cookiecutter.open_source_license != 'Not open source' %}
 When a new tag is pushed to github the
 [publish-pypi workflow](./.github/workflows/publish-pypi.yaml) is triggered and
 will build and publish the new version to PyPi. You will need to configure
@@ -122,6 +126,8 @@ This will build the project and publish to PyPi with help of
 additional target repositories refer to your
 [.pypirc](https://packaging.python.org/en/latest/specifications/pypirc/)
 configuration file.
+
+{%- endif %}
 
 ### Documentation
 

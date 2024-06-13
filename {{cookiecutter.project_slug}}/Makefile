@@ -110,6 +110,8 @@ upgrade-deps: lock gen-req ## Upgrades dependencies
 	@echo "+ $@"
 {%- endif %}
 
+{%- if cookiecutter.open_source_license != 'Not open source' %}
+
 .PHONY: publish-test
 publish-test: build ## Publish pkg to PyPi test instance
 	@echo "+ $@"
@@ -119,3 +121,4 @@ publish-test: build ## Publish pkg to PyPi test instance
 publish: build ## Publish pkg to PyPi
 	@echo "+ $@"
 	twine upload dist/*
+{%- endif %}
