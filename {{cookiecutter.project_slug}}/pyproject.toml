@@ -1,5 +1,5 @@
 [project]
-name = "{{ cookiecutter.project_slug }}"
+name = "{{ cookiecutter.project_slug.replace('_', '-') }}"
 description = "{{ cookiecutter.project_short_description }}"
 authors = [{ name = "{{ cookiecutter.full_name }}" }]
 readme = "README.md"
