@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import pathlib
 import subprocess
-from shutil import which, rmtree
 import sys
+from shutil import which, rmtree
 
-GIT_COMMIT_MESSAGE = """Adding generated project resources
+GIT_COMMIT_MESSAGE = """Add generated project resources
 
 
 This project was generated with the help of:
