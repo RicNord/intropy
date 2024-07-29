@@ -4,13 +4,10 @@ intropy package
 Submodules
 ----------
 
-intropy.cli module
-------------------
+.. toctree::
+   :maxdepth: 2
 
-.. automodule:: intropy.cli
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   intropy.cli
 
 Module contents
 ---------------
