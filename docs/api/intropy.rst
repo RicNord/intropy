@@ -1,6 +1,11 @@
 intropy package
 ===============
 
+.. automodule:: intropy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Submodules
 ----------
 
@@ -8,11 +13,3 @@ Submodules
    :maxdepth: 2
 
    intropy.cli
-
-Module contents
----------------
-
-.. automodule:: intropy
-   :members:
-   :undoc-members:
-   :show-inheritance:
