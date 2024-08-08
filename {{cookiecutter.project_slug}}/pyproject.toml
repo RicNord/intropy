@@ -8,9 +8,6 @@ dynamic = ["version", "dependencies", "optional-dependencies"]
 {%- elif cookiecutter.project_type == 'Library' -%}
 dynamic = ["version"]
 dependencies = []
-{%- endif -%}
-{%- if cookiecutter.open_source_license == 'MIT' %}
-license = { file = "LICENSE" }
 {%- endif %}
 classifiers = [
     "Programming Language :: Python :: 3",

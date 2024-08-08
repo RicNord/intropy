@@ -3,8 +3,8 @@ name = "intropy"
 description = "Jump-start your python project"
 readme = "README.md"
 dynamic = ["version"]
-license = { file = "LICENSE" }
 classifiers = [
+    "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
 ]

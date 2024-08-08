@@ -52,7 +52,10 @@ def test_bake_project_with_custom_names(cookies, project_name, expected):
 def test_bake_selecting_license(cookies, license, expected):
     result = cookies.bake(extra_context={"open_source_license": license})
     assert expected in result.project_path.joinpath("LICENSE").read_text()
-    assert "LICENSE" in result.project_path.joinpath(_PROJECT_FILE).read_text()
+    assert (
+        "License :: OSI Approved :: MIT License"
+        in result.project_path.joinpath(_PROJECT_FILE).read_text()
+    )
 
 
 def test_bake_not_open_source(cookies):
@@ -60,7 +63,10 @@ def test_bake_not_open_source(cookies):
     toplevel_files = [f.name for f in result.project_path.iterdir()]
     assert _PROJECT_FILE in toplevel_files
     assert "LICENSE" not in toplevel_files
-    assert "license" not in result.project_path.joinpath(_PROJECT_FILE).read_text()
+    assert (
+        "Private :: Do Not Upload"
+        in result.project_path.joinpath(_PROJECT_FILE).read_text()
+    )
 
 
 def test_year_in_license_file(cookies):
