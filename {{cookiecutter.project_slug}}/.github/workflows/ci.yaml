@@ -90,6 +90,7 @@ jobs:
           - lint
           - format
           - docs
+          - bandit
 {%- if cookiecutter.git_init %}
           - pre-commit
 {%- endif %}

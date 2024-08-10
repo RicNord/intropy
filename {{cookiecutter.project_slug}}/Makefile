@@ -43,6 +43,12 @@ auto-fix: format ## Auto-fix possible style issues
 	@echo "+ $@"
 	ruff check --fix --show-fixes
 
+.PHONY: sec
+sec: ## Run security scanning
+	@echo "+ $@"
+	bandit -r {{ cookiecutter.project_slug }}
+	trivy fs .
+
 .PHONY: build
 build: clean-build ## Build distribution
 	@echo "+ $@"

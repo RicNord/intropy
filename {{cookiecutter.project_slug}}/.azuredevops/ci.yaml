@@ -106,6 +106,9 @@ jobs:
         docs:
           tox_env: 'docs'
           imageName: 'ubuntu-latest'
+        bandit:
+          tox_env: 'bandit'
+          imageName: 'ubuntu-latest'
 {%- if cookiecutter.git_init %}
         pre_commit:
           tox_env: 'pre-commit'
