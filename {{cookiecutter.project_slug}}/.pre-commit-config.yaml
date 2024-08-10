@@ -17,7 +17,7 @@ repos:
       - id: validate-pyproject
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.5
+    rev: v0.5.7
     hooks:
       # Run the linter.
       - id: ruff
@@ -26,9 +26,16 @@ repos:
       # Run the formatter.
       - id: ruff-format
 {%- endif %}
-{% if cookiecutter.code_formatter == 'Black' %}
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.9
+    hooks:
+      - id: bandit
+        args: ["-c", "pyproject.toml"]
+
+{%- if cookiecutter.code_formatter == 'Black' %}
   - repo: https://github.com/psf/black
-    rev: 24.4.2
+    rev: 24.8.0
     hooks:
       - id: black
 {% endif %}
