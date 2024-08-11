@@ -1,4 +1,4 @@
-bandit
+bandit[toml]
 build
 bump-my-version
 mypy

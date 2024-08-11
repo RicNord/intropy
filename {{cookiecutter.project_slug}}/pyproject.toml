@@ -26,6 +26,7 @@ classifiers = [
 {% if cookiecutter.project_type == 'Library' -%}
 [project.optional-dependencies]
 dev = [
+    "bandit[toml]",
     "build",
     "bump-my-version",
     "mypy",

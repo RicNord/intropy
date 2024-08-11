@@ -32,6 +32,7 @@ repos:
     hooks:
       - id: bandit
         args: ["-c", "pyproject.toml"]
+        additional_dependencies: ["bandit[toml]"]
 
 {%- if cookiecutter.code_formatter == 'Black' %}
   - repo: https://github.com/psf/black

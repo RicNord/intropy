@@ -12,7 +12,7 @@ dependencies = ["cookiecutter"]
 
 [project.optional-dependencies]
 dev = [
-    "bandit",
+    "bandit[toml]",
     "build",
     "bump-my-version",
     "mypy",
