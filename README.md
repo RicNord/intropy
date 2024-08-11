@@ -4,13 +4,15 @@
 [![Build Status](https://github.com/RicNord/intropy/actions/workflows/ci.yaml/badge.svg)](https://github.com/RicNord/intropy/actions)
 
 Powered by [Cookiecutter](https://github.com/cookiecutter/cookiecutter),
-intropy is a framework for jump-starting production-grade python projects. The
-python project will be generated and configured automatically with:
+intropy is a framework for jump-starting production-grade python projects. It
+generates a new python project within seconds that is configured automatically
+with:
 
 - Build system
 - Test and code quality tooling
 - Documentation
 - Automation pipelines
+- Security scanner
 - etc...
 
 ## Features
@@ -24,12 +26,14 @@ python project will be generated and configured automatically with:
 - Package and environment management
   - Deployable applications: [Pipenv](https://pipenv.pypa.io/en/latest/) |
     Version pinning and virtual environment setup
-  - Libraries: Pyproject explicit defined dependencies
+  - Libraries: pyproject.toml explicitly defined dependencies
 - [Pre-commit](https://pre-commit.com/) | pre-commit hooks
 - [Bump my version](https://callowayproject.github.io/bump-my-version/) | Bump
   semantic version
 - [Sphinx](https://www.sphinx-doc.org/) | Documentation tool
 - [Logging](https://docs.python.org/3/library/logging.html) boilerplate
+- [Bandit](https://bandit.readthedocs.io/en/latest/) and
+  [Trivy](https://trivy.dev/) | Security scanners
 - DevOps platform options
   - Github
     - Github workflows | CI and publishing to PyPi
