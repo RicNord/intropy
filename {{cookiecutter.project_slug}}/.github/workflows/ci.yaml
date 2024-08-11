@@ -39,6 +39,35 @@ jobs:
           pipenv requirements --categories style | sed '/^-i /d' | diff --color=auto requirements/requirements-style.txt -
 {%- endif %}
 
+  trivy:
+    # Uncomment if upload sarif is needed
+    # permissions:
+    #   contents: read # for actions/checkout to fetch code
+    #   security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+    #   actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
+    name: Scan repo with trivy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Trivy vulnerability scanner in fs mode
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          trivy-config: trivy.yaml
+          ignore-unfixed: true
+          exit-code: '1'
+          # format: 'sarif'
+          # output: 'trivy-results.sarif'
+
+    # - name: Upload Trivy scan results to GitHub Security tab
+    #   uses: github/codeql-action/upload-sarif@v3
+    #   with:
+    #     sarif_file: 'trivy-results.sarif'
+
   test:
     name: Test python {% raw %}${{ matrix.py }} on ${{ matrix.os }}{% endraw %}
     runs-on: {% raw %}${{ matrix.os }}{% endraw %}
