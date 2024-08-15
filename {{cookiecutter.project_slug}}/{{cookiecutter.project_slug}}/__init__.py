@@ -12,9 +12,20 @@ class UTCFormatter(logging.Formatter):
     converter = time.gmtime
 
 
+class SelfFilter(logging.Filter):
+    def filter(self, record):
+        """Filter only events from within the package"""
+        return record.name.startswith(str(__package__))
+
+
 LOGGING_CONFIG = {
     "version": 1,
     "disable_existing_loggers": False,
+    "filters": {
+        "self_filter": {
+            "()": SelfFilter,
+        },
+    },
     "formatters": {
         "simple": {"format": "%(levelname)s: %(message)s"},
         "standard_utc": {
@@ -25,21 +36,19 @@ LOGGING_CONFIG = {
     },
     "handlers": {
         "default": {
-            "level": "WARNING",
             "formatter": "simple",
             "class": "logging.StreamHandler",
+            "filters": ["self_filter"],
         },
         "detailed": {
-            "level": "DEBUG",
             "formatter": "standard_utc",
             "class": "logging.StreamHandler",
-            "stream": "ext://sys.stderr",
+            "filters": ["self_filter"],
         },
     },
     "loggers": {
         "": {  # root logger
             "handlers": ["default"],
-            "level": "DEBUG",
         },
         "__main__": {  # if __name__ == '__main__'
             "handlers": ["detailed"],
