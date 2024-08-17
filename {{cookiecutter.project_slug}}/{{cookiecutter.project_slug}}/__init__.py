@@ -64,5 +64,6 @@ def setup_logging():
 {%- elif cookiecutter.project_type == 'Library' -%}
 import logging
 
-logging.getLogger(__name__).addHandler(logging.NullHandler())
+ROOT_LOGGER = logging.getLogger(__name__)
+ROOT_LOGGER.addHandler(logging.NullHandler())
 {%- endif %}
