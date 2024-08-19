@@ -4,20 +4,35 @@ from typing import Optional, Sequence
 
 from cookiecutter.main import cookiecutter
 
-from intropy import setup_logging
+from intropy import INTROPY_ROOT_LOGGER, setup_logging
 
 logger = logging.getLogger(__name__)
+
+
+class _CustomHelpFormatter(argparse.ArgumentDefaultsHelpFormatter):
+    def _get_help_string(self, action):
+        if action.default is not argparse.SUPPRESS and action.dest != "verbose":
+            return super()._get_help_string(action)
+        return action.help
+
+
+def _set_logger_level(logger: logging.Logger, count: int) -> None:
+    if count == 0:
+        return
+    if count == 1:
+        logger.setLevel(logging.INFO)
+        return
+    logger.setLevel(logging.DEBUG)
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     """Entry point"""
 
     setup_logging()
-    logger.debug(f"Got {argv=}")
 
     parser = argparse.ArgumentParser(
         description="Generate a new python project",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+        formatter_class=_CustomHelpFormatter,
     )
     parser.add_argument(
         "template",
@@ -83,8 +98,22 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         action="store_true",
         help="Do not delete project folder on failure",
     )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="count",
+        default=0,
+        help="Increase verbosity: -v for INFO, -vv for DEBUG (default: WARNING)",
+    )
+
     args = parser.parse_args(argv)
+
+    _set_logger_level(logger=INTROPY_ROOT_LOGGER, count=args.verbose)
+
+    logger.debug(f"Got {argv=}")
     dict_args = vars(args)
+    # Clean up args for cookiecutter func
+    dict_args.pop("verbose")
     template = dict_args.pop("template")
 
     logger.debug(f"Parsed args: {dict_args}")

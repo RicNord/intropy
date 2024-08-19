@@ -44,7 +44,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "--verbose",
         action="count",
         default=0,
-        help="Increase verbosity: -v for INFO, -vv for DEBUG. Default is WARNING.",
+        help="Increase verbosity: -v for INFO, -vv for DEBUG (default: WARNING)",
     )
 
     args = parser.parse_args(argv)
