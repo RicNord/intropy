@@ -39,6 +39,9 @@ version = { attr = "intropy.__version__" }
 include = ["intropy"]
 exclude = ["{{cookiecutter.project_slug}}*", "tests*", "hooks*"]
 
+[tool.setuptools.package-data]
+intropy = ["py.typed"]
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
 required_plugins = ["pytest-cov", "pytest-cookies"]
