@@ -10,7 +10,7 @@ jobs:
     displayName: 'Requirements check'
     steps:
       - checkout: self
-        fetchDepth: 0
+        fetchDepth: "0"
 
       - task: UsePythonVersion@0
         inputs:
@@ -69,12 +69,12 @@ jobs:
           imageName: 'macos-latest'
           pythonVersion: '3.10'
 {%- endif %}
-    continueOnError: true
+    continueOnError: "true"
     pool:
       vmImage: $(imageName)
     steps:
       - checkout: self
-        fetchDepth: 0
+        fetchDepth: "0"
 
       - task: UsePythonVersion@0
         inputs:
@@ -114,12 +114,12 @@ jobs:
           tox_env: 'pre-commit'
           imageName: 'ubuntu-latest'
 {%- endif %}
-    continueOnError: true
+    continueOnError: "true"
     pool:
       vmImage: $(imageName)
     steps:
       - checkout: self
-        fetchDepth: 0
+        fetchDepth: "0"
 
       - task: UsePythonVersion@0
         inputs:

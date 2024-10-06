@@ -67,9 +67,9 @@ def main():
 
     if "No CI" == "{{ cookiecutter.ci_provider }}":
         rmtree(".github")
-        rmtree(".azuredevops")
+        rmtree(".azure-pipelines")
     elif "Github" == "{{ cookiecutter.ci_provider }}":
-        rmtree(".azuredevops")
+        rmtree(".azure-pipelines")
     elif "Azure DevOps" == "{{ cookiecutter.ci_provider }}":
         rmtree(".github")
 
