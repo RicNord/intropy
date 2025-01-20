@@ -72,5 +72,5 @@ def test_bake_not_open_source(cookies):
 def test_year_in_license_file(cookies):
     result = cookies.bake()
     license_file_path = result.project_path.joinpath("LICENSE")
-    now = datetime.datetime.now()
+    now = datetime.datetime.now(tz=datetime.timezone.utc)
     assert str(now.year) in license_file_path.read_text()

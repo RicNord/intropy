@@ -78,6 +78,7 @@ jobs:
 {%- if cookiecutter.project_type == 'Application' %}
           - "3.12"
 {%- elif cookiecutter.project_type == 'Library' %}
+          - "3.13"
           - "3.12"
           - "3.11"
           - "3.10"
